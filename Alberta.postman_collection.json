@@ -1,0 +1,316 @@
+{
+	"info": {
+		"_postman_id": "f97ae888-9d37-43a8-99dd-f7f7df338310",
+		"name": "Alberta",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1231115"
+	},
+	"item": [
+		{
+			"name": "Successful quote",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "secure",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<QuoteRequest>\r\n<!-- In the test data, we only have TN to TX, can add more in the PackageManager class -->\r\n   <Source>TN</Source>\r\n   <Destination>TX</Destination>\r\n   <Packages>\r\n    <Package>\r\n    <!-- Change the dimensions to get different volume quote -->\r\n        <Width>1</Width>\r\n        <Length>1</Length>\r\n        <Height>1</Height>\r\n    </Package>\r\n   </Packages>\r\n</QuoteRequest>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7162/api/packages/quote?format=xml",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7162",
+					"path": [
+						"api",
+						"packages",
+						"quote"
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "xml"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Successful amount",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "secure",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"consignee\": \"TN\",\r\n    \"consignor\": \"TX\",\r\n    \"cartons\": [\r\n        {\r\n        \"width\": 15,\r\n        \"length\": 10,\r\n        \"height\": 1\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7162/api/packages/amount?format=json",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7162",
+					"path": [
+						"api",
+						"packages",
+						"amount"
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "json"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Successful total",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "secure",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"contactAddress\": \"TN\",\r\n    \"warehouseAddress\": \"TX\",\r\n    \"dimensions\": [\r\n        {\r\n        \"width\": 15,\r\n        \"length\": 10,\r\n        \"height\": 1\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7162/api/packages/total?format=json",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7162",
+					"path": [
+						"api",
+						"packages",
+						"total"
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "json"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unsuccessful total",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "secure",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"consignee\": \"TN\",\r\n    \"consignor\": \"TXAAAA\",\r\n    \"cartons\": [\r\n        {\r\n        \"width\": 15,\r\n        \"length\": 10,\r\n        \"height\": 1\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7162/api/packages/amount?format=json",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7162",
+					"path": [
+						"api",
+						"packages",
+						"amount"
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "json"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unsuccessful amount",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "secure",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"consignee\": \"TN\",\r\n    \"consignor\": \"MXAS\",\r\n    \"cartons\": [\r\n        {\r\n        \"width\": 15,\r\n        \"length\": 10,\r\n        \"height\": 1\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7162/api/packages/amount?format=json",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7162",
+					"path": [
+						"api",
+						"packages",
+						"amount"
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "json"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unsuccessful quote",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "secure",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<QuoteRequest>\r\n<!-- In the test data, we only have TN to TX, can add more in the PackageManager class -->\r\n<!-- Here we are using a wrong destination -->\r\n   <Source>TN</Source>\r\n   <Destination>TXAA</Destination>\r\n   <Packages>\r\n    <Package>\r\n    <!-- Change the dimensions to get different volume quote -->\r\n        <Width>1</Width>\r\n        <Length>1</Length>\r\n        <Height>1</Height>\r\n    </Package>\r\n   </Packages>\r\n</QuoteRequest>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7162/api/packages/quote?format=xml",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7162",
+					"path": [
+						"api",
+						"packages",
+						"quote"
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "xml"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
